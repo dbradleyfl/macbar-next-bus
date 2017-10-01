@@ -1,0 +1,64 @@
+{
+  "name": "macbar-next-bus",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Devon Bradley",
+  "description": "Mac menubar app for monitoring when the next bus is arriving at a specified spot.",
+  "main": "./src/main/index.js",
+  "scripts": {
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack src/main",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist -- --dir -c.compression=store -c.mac.identity=null",
+    "publish": "electron-builder -p always"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "electron-json-storage": "^3.1.1",
+    "electron-updater": "^2.10.1",
+    "photonkit": "^0.1.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "source-map-support": "^0.4.17"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "dotenv": "^4.0.0",
+    "electron": "^1.7.6",
+    "electron-builder": "^19.27.7",
+    "electron-webpack": "^1.5.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.5.6"
+  },
+  "build": {
+    "appId": "com.devonbradley.macbar-next-bus",
+    "asar": false,
+    "productName": "Macbar Next Bus",
+    "mac": {
+      "icon": "static/icon.icns",
+      "publish": {
+        "provider": "github"
+      }
+    },
+    "extraResources": [
+      {
+        "from": "src/main/IconTemplate.png",
+        "to": "./app"
+      },
+      {
+        "from": "src/main/IconTemplate@2x.png",
+        "to": "./app"
+      }
+    ]
+  },
+  "electronWebpack": {
+    "title": "Macbar Next Bus",
+    "main": {
+      "sourceDirectory": "src/main"
+    },
+    "renderer": {
+      "sourceDirectory": "src/renderer"
+    }
+  }
+}
