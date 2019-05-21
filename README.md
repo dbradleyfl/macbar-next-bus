@@ -65,7 +65,7 @@ An electron menubar application for monitoring a specified transit stop from the
 * York College
 
 ## Setup "open on Mac startup"
-* Open settins
+* Open settings
 * Click "Users & Groups"
 * Click "Login Items"
 * Click "+"
